@@ -114,8 +114,8 @@ def get_progress_bar_string(pct):
     pct = float(pct.strip('%'))
     p = min(max(pct, 0), 100)
     cFull = int(p // 10)
-    p_str = '■' * cFull
-    p_str += '□' * (10 - cFull)
+    p_str = '▰' * cFull
+    p_str += '▱' * (10 - cFull)
     return f"[{p_str}]"
 
 
@@ -142,7 +142,7 @@ def get_readable_message():
             msg += f"\n<b>{theme['Process']}: </b>{download.processed_bytes()} of {download.size()}"
             msg += f"\n<b>{theme['ETA']}: </b>{download.eta()} <b>| Elapsed: </b>{get_readable_time(time() - download.message.date.timestamp())}"
             msg += f"\n<b>{theme['Engine']}: </b>{download.engine}"
-            msg += f"\n<b>{theme['User']}: </b>{download.message.from_user.mention(style='html')} | <b>ID: </b><code>{download.message.from_user.id}</code>"
+            msg += f"\n<b>{theme['By']}: </b>{download.message.from_user.mention(style='html')}"
             if hasattr(download, 'seeders_num'):
                 try:
                     msg += f"\n<b>{theme['Seeders']}:</b> {download.seeders_num()} | <b>Leechers:</b> {download.leechers_num()}"
